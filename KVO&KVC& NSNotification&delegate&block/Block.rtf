@@ -1,0 +1,50 @@
+{\rtf1\ansi\ansicpg936\cocoartf1404\cocoasubrtf460
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 PingFangSC-Regular;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue255;\red43\green131\blue159;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww12600\viewh10200\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 Block\
+\
+
+\f1 \'ba\'cd
+\f0 delegate
+\f1 \'b9\'a6\'c4\'dc\'cf\'e0\'cd\'ac\'a3\'ac\'ca\'b9\'d3\'c3\'c6\'f0\'c0\'b4\'b8\'fc\'bc\'d3\'bc\'f2\'b5\'a5\'c3\'f7\'c1\'cb\
+\'ca\'b9\'d3\'c3\'b7\'bd\'b7\'a8\
+\'bc\'d9\'c9\'e8\'c1\'bd\'b8\'f6view controller  VC1\'a3\'a8\'bd\'d3\'ca\'d5Block\'b4\'fa\'c0\'ed\'bb\'d8\'b5\'f7\'a3\'a9 VC2\'a3\'a8\'c9\'e8\'d6\'c3\'b4\'fa\'c0\'ed\'a3\'a9\
+\'ca\'b9\'d3\'c3\'b7\'bd\'b7\'a8\
+VC2 \
+\pard\tx529\pardeftab529\pardirnatural\partightenfactor0
+
+\f2\fs22 \cf2 \CocoaLigature0 typedef\cf0  \cf2 void\cf0 (^colorBlock)(\cf3 UIColor\cf0  *color);\
+\
+\cf2 @interface\cf0  ColorViewController : \cf3 UIViewController\cf0 \
+\
+\cf2 @property\cf0  (\cf2 nonatomic\cf0 , \cf2 strong\cf0 ) \cf3 colorBlock\cf0  block;\
+\
+\cf2 @end\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1\fs28 \cf0 \CocoaLigature1 \
+\pard\tx529\pardeftab529\pardirnatural\partightenfactor0
+
+\f2\fs22 \cf0 \CocoaLigature0  \cf2 if\cf0  (\cf2 self\cf0 .\cf3 block\cf0 ) \{\
+      \cf2 self\cf0 .\cf3 block\cf0 (sender.\cf3 backgroundColor\cf0 );\
+      \cf2 self\cf0 .\cf3 block\cf0  = \cf2 nil\cf0 ;\
+ \}\
+
+\f1\fs28 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 VC1\
+\pard\tx529\pardeftab529\pardirnatural\partightenfactor0
+
+\f2\fs22 \cf0 \CocoaLigature0 -(\cf2 void\cf0 )prepareForSegue:(\cf3 UIStoryboardSegue\cf0  *)segue sender:(\cf2 id\cf0 )sender\{\
+    \cf2 id\cf0  destVc = segue.\cf3 destinationViewController\cf0 ;\
+    \cf2 if\cf0  ([destVc \cf3 isKindOfClass\cf0 :[\cf3 ColorViewController\cf0  \cf3 class\cf0 ]]) \{\
+        \cf3 ColorViewController\cf0  *colorVc = destVc;\
+        colorVc.\cf3 block\cf0  = ^(\cf3 UIColor\cf0  *color) \{\
+            [\cf2 self\cf0 .\cf3 nextButton\cf0  \cf3 setBackgroundColor\cf0 :color];\
+        \};\
+    \}\
+\}}
